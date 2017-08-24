@@ -112,7 +112,7 @@ EditButton.pack()
 
 ########################################################################################################################
 # AddActivity Frame
-# The layout is devided in many frames
+# The layout is divided in many frames
 
 
 def on_entry_click(event):
@@ -317,18 +317,18 @@ LastFrame.pack(side='top', fill=X)
 
 activity_names = []
 
-activity_name = strainer('name', 'sort', 'activity')
+activity_name = strainer('name', 'sort', 'activities')
 number = 0
 
-for l in range(0, len(activity_name)):
-    activity_names.append(activity_name[number][0])
+for l in range(len(activity_name)):
+    activity_names.append(activity_name[number][l])
     number += 1
 
 activity_1 = StringVar(LastFrame)
 
 
-option = OptionMenu(LastFrame, activity_1,*activity_names)
-option.pack(fill=X, pady=5)
+option_cate = OptionMenu(LastFrame, activity_1,*activity_names)
+option_cate.pack(fill=X, pady=5)
 def activity_option_changed():
     chosen=activity_1.get()
     return chosen
@@ -361,15 +361,11 @@ def option_changed():
     deleted_or_edited=Category_1.get()
     return deleted_or_edited
 
-# changed_to=StringVar(LastFrame)
-# edit_entry=Entry(LastFrame).pack(side=LEFT,ipadx=20)
 
-# def editing_category():
-#     edit_anything(option_changed(),'name',changed_to)
 
 Back_EditCategory = Button(LastFrame, text='Back', command=back).pack(side=LEFT, ipadx=20)
 Insert_EditCategory=Button(LastFrame,text='Delete',command=lambda :delete_something(option_changed()))
-# Insert_EditCategory.pack(side=LEFT,ipadx=20)
+Insert_EditCategory.pack(side=LEFT,ipadx=20)
 # Button(LastFrame,text="Edit",command=lambda :editing_category()).pack(side=LEFT,ipadx=20)
 
 
