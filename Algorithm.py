@@ -106,7 +106,7 @@ def insert_category(name, priority):
     conn.commit()
 
 
-def edit(name, what, to):
+def edit_anything(name, what, to):
     """
     Using this function, the user can edit anything he wants in the activity
     :param name: name of the activity

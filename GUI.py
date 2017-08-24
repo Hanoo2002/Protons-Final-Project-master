@@ -295,7 +295,7 @@ Radiobutton(PriorityFrame, text='5', variable=Importance, value=5).pack(side=LEF
 
 def back():
     raise_frame(Home)
-    
+
 
 def insert():
     insert_category(event_name.get(), Importance.get())
@@ -314,6 +314,24 @@ Back_AddCategory = Button(LastFrame_AddCategory, text='Back', command=back).pack
 
 LastFrame = Frame(EditActivity)
 LastFrame.pack(side='top', fill=X)
+
+activity_names = []
+
+activity_name = strainer('name', 'sort', 'activity')
+number = 0
+
+for l in range(0, len(activity_name)):
+    activity_names.append(activity_name[number][0])
+    number += 1
+
+activity_1 = StringVar(LastFrame)
+
+
+option = OptionMenu(LastFrame, activity_1,*activity_names)
+option.pack(fill=X, pady=5)
+def activity_option_changed():
+    chosen=activity_1.get()
+    return chosen
 
 Back_EditActivity = Button(LastFrame, text='Back', command=back).pack(side=LEFT, ipadx=20)
 
@@ -344,14 +362,14 @@ def option_changed():
     return deleted_or_edited
 
 # changed_to=StringVar(LastFrame)
-# edit_entry=Entry(LastFrame,variable=changed_to).pack(side=LEFT,ipadx=20)
+# edit_entry=Entry(LastFrame).pack(side=LEFT,ipadx=20)
 
 # def editing_category():
-#     edit(option_changed(),'name',changed_to)
+#     edit_anything(option_changed(),'name',changed_to)
 
 Back_EditCategory = Button(LastFrame, text='Back', command=back).pack(side=LEFT, ipadx=20)
 Insert_EditCategory=Button(LastFrame,text='Delete',command=lambda :delete_something(option_changed()))
-Insert_EditCategory.pack(side=LEFT,ipadx=20)
+# Insert_EditCategory.pack(side=LEFT,ipadx=20)
 # Button(LastFrame,text="Edit",command=lambda :editing_category()).pack(side=LEFT,ipadx=20)
 
 
