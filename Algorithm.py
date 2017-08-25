@@ -209,3 +209,18 @@ def no_category():
     else:
         return True
 
+def organizeM():
+    """
+    This function returns a list of numbers. These numbers are the numbers of scores in a specific order. The first
+    element is the most important one
+    :parameters all of these parameters are used to get the scores of specific activities in the table!
+    """
+    scores = []
+    today_listM = strainer('name', 'sort', 'event')
+    today_listM.extend(strainer('name', 'sort', 'todo'))
+    data = list(today_listM)
+    while len(data) != 0:
+        number = lowest_number(data)
+        scores.append(number)
+        data.remove(number)
+    return scores

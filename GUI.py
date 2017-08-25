@@ -1,24 +1,10 @@
-from edit_category import *
+from today_frame import *
 ########################################################################################################################
 # Home Frame
 build_home_frame()
 ########################################################################################################################
 # AddActivity Frame
 # The layout is divided in many frames
-
-def on_entry_click(event):
-    """
-    when any entry widget is clicked, this code comes to action.
-    This deletes what was written in the entry widget and makes the font-colour black
-    """
-    global FirstClick
-    entry = event.widget
-    if FirstClick:
-        FirstClick = False
-        entry.config(fg='black')
-        entry.delete(0, "end")
-    FirstClick = True
-    return
 
 
 def back():
@@ -42,7 +28,7 @@ def insert():
             frequency.append(list_of_calendar_day_names[number_of_day])
             number_of_day += 1
     date_of_activity = "{}/{}/{}".format(Day.get(), Month.get(), Year.get())
-    if Category.get() == 'Todo':
+    if event.get() == 'Todo':
         insert_todo(NameOfActivity.get(), Category.get(), HoursFrom.get(), MinTo.get(), date_of_activity,
                     Importance.get(), frequency)
     else:
@@ -218,13 +204,8 @@ Back_Calendar = Button(LastFrame, text='Back', command=back).pack(side=LEFT, ipa
 build_todo_frame()
 
 ########################################################################################################################
-# Today Frame todo
-
-LastFrame_Today = Frame(Today)
-LastFrame_Today.pack(side='top', fill=X)
-
-Back_Today = Button(LastFrame_Today, text='Back', command=back).pack(side=LEFT, ipadx=20)
-
+# Today Frame
+build_today_frame()
 # Functions you will use: strainer, organize(propabily you will need to make an extra db for this)
 ########################################################################################################################
 # Now Frame todo

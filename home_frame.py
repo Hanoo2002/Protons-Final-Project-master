@@ -4,6 +4,20 @@ import calendar
 
 create_table()
 
+def on_entry_click(event):
+    """
+    when any entry widget is clicked, this code comes to action.
+    This deletes what was written in the entry widget and makes the font-colour black
+    """
+    global FirstClick
+    entry = event.widget
+    if FirstClick:
+        FirstClick = False
+        entry.config(fg='black')
+        entry.delete(0, "end")
+    FirstClick = True
+    return
+
 def back():
     raise_frame(Home)
 
