@@ -1,11 +1,4 @@
-from add_category import *
-
-
-def delete_something(string):
-    delete(string)
-    back()
-    print(string)
-
+from todo_frame import *
 
 def build_edit_category_frame():
     LastFrame = Frame(EditCategory)
@@ -24,10 +17,11 @@ def build_edit_category_frame():
 
     option = OptionMenu(LastFrame, Category_1, *category_names)
     option.pack(fill=X, pady=5)
+
     def option_changed():
-        deleted_or_edited=Category_1.get()
+        deleted_or_edited = Category_1.get()
         return deleted_or_edited
 
     Back_EditCategory = Button(LastFrame, text='Back', command=back).pack(side=LEFT, ipadx=20)
-    Insert_EditCategory=Button(LastFrame,text='Delete',command=lambda :delete_something(option_changed()))
-    Insert_EditCategory.pack(side=LEFT,ipadx=20)
+    Insert_EditCategory = Button(LastFrame, text='Delete', command=lambda: delete_something(option_changed()))
+    Insert_EditCategory.pack(side=LEFT, ipadx=20)

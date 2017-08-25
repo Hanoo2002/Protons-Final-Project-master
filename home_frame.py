@@ -4,6 +4,8 @@ import calendar
 
 create_table()
 
+def back():
+    raise_frame(Home)
 
 def raise_frame(parent):
     parent.tkraise()
@@ -24,8 +26,7 @@ Now = Frame(root)
 for frame in (Home, AddActivity, AddCategory, EditActivity, EditCategory, Calendar, Todo, Today, Now):
     frame.grid(row=0, column=0, sticky='news')
 
-
-def home_frame_build():
+def build_home_frame():
     def destroy_pop_up(parent,pop_up):
         raise_frame(parent)
         pop_up.destroy()
