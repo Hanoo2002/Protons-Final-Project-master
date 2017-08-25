@@ -8,21 +8,22 @@ def delete_something(string):
 def build_activity_frame():
     EditActivityFrame = Frame(EditActivity)
     EditActivityFrame.pack(side='top', fill=X)
-    middle_activity_frame=Frame(EditActivity)
-    middle_activity_frame.pack(side='top',fill=Y)
 
-    category_names = []
-
-    category_name = strainer('name', 'sort', 'activities')
-    number = 0
-
-    for x in range(0, len(category_name)):
-        category_names.append(category_name[number][0])
-        number += 1
+    Label(EditActivityFrame,text="Enter the name of the activity you want to edit").pack(side=LEFT)
+    name_of_edited_actvity=Entry(EditActivityFrame).pack(side=LEFT)
+    Label(EditActivityFrame,text='Change its name into(optional if deleting):').pack(side=LEFT)
+    change_to=Entry(EditActivityFrame).pack(side=LEFT)
 
 
-    def check():
-        print(category_names)
+    def change(frm,to):
+        edit_anything(frm,'name',to)
+        back()
 
-    Button(middle_activity_frame,text='check',command=check).pack()
-    Back_EditActivity = Button(middle_activity_frame, text='Back', command=back).pack(side=LEFT, ipadx=20)
+    def delete_something(name):
+        delete(name)
+        back()
+        print(name)
+
+    Button(EditActivityFrame,text='Change',command=lambda :change(name_of_edited_actvity.get(),change_to.get())).pack(side=RIGHT)
+    Back_EditActivity = Button(EditActivityFrame, text='Back', command=back).pack(side=RIGHT)
+    Button(EditActivityFrame,text='Delete',command=delete_something(name_of_edited_actvity)).pack(side=RIGHT)
